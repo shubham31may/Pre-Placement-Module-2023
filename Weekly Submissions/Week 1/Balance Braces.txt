@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+    bool ispar(string x)
+    {
+        stack<char>st;
+        for(auto it:x){
+            if(it=='['||it=='{'||it=='('){
+                st.push(it);
+            }else{
+                if(st.size()==0){
+                    return false;
+                }else if(it==']'&&st.top()!='['){
+                    return false;
+                }else if(it=='}'&&st.top()!='{'){
+                    return false;
+                }else if(it==')'&&st.top()!='('){
+                    return false;
+                }else{
+                     st.pop();
+                }
+            }
+        }
+        if(st.size()!=0){
+            return false;
+        }
+        return true;
+    }
+
+int main()
+{
+   string a;
+       cin>>a;
+       if(ispar(a))
+        cout<<"true"<<endl;
+       else
+        cout<<"false"<<endl;
+     return 0;
+}
